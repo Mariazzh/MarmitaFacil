@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: marmitafacil-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  auth-service:
+    build: ./auth-service
+    container_name: marmitafacil-auth
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/marmitafacil
+
+  order-service:
+    build: ./order-service
+    container_name: marmitafacil-order
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/marmitafacil
+
+  inventory-service:
+    build: ./inventory-service
+    container_name: marmitafacil-inventory
+    ports:
+      - "3003:3003"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/marmitafacil
+
+  frontend:
+    build: ./marmitafacil-web
+    container_name: marmitafacil-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth-service
+      - order-service
+      - inventory-service
+
+volumes:
+  mongo_data:
