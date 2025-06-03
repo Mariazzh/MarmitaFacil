@@ -1,8 +1,14 @@
+// Carrega as variáveis de ambiente do arquivo .env
 require('dotenv').config();
+// Importa o framework Express para criar a API
 const express = require('express');
+// Importa o middleware CORS para permitir requisições de diferentes origens
 const cors = require('cors');
+// Importa a biblioteca bcryptjs para hash de senhas
 const bcrypt = require('bcryptjs');
+// Importa a biblioteca jsonwebtoken para criar e verificar tokens JWT
 const jwt = require('jsonwebtoken');
+// Importa o ODM Mongoose para interagir com o MongoDB
 const mongoose = require('mongoose');
 
 const app = express();
