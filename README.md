@@ -81,12 +81,6 @@ Faça login com o usuário criado.
 1. Acesse a página de criação de pedidos (`/pedidos`).
 2. Preencha os dados e crie um pedido.
 3. Verifique se o pedido foi criado com sucesso.
-
-### Listar pedidos
-
-1. Acesse a página de listagem de pedidos (`/listar-pedidos`).
-2. Confira os pedidos cadastrados.
-
 ---
 
 ## Configurações adicionais
